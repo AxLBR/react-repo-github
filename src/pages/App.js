@@ -7,40 +7,46 @@ import { api } from '../services/api';
 import { Container } from './styles';
 
 function App() {
-  const [currentRepo, setCurrentRepo] = useState('');
+  const [currentUser, setCurrentUser] = useState('');
   const [repos, setRepos] = useState([]);
+  const [error, setError] = useState('');
 
   const handleSearchRepo = async () => {
+    const {data} = await api.get(`users/${currentUser}/repos`).catch(() => {
+      return 'undefined';
+   });
 
-    const {data} = await api.get(`repos/${currentRepo}`)
+    if (data == undefined){
+      setError('Usuário não encontrado !');
+      setRepos([]);
+    } else {
+      let newData = data.filter((e) => (e.name.toLowerCase() != currentUser.toLowerCase()));
 
-    if(data.id){
-      const isExist = repos.find(repo => repo.id === data.id);
-
-      if(!isExist){
-        setRepos(prev => [...prev, data]);
-        setCurrentRepo('')
-        return
-      }
-    }
-    //alert('Repositório não encontrado')
+      setError('');
+      setRepos(newData);
+      setCurrentUser('');
+    }      
   }
 
   const handleRemoveRepo = (id) => {
     let newRepo = repos.filter((e) => (e.id != id));
-    setRepos(newRepo)
+    setRepos(newRepo);
   }
 
   return (
     <Container>
-      <img src={gitLogo} width={100} height={100} alt="github logo"/>
-      <Input value={currentRepo} onChange={(e) => setCurrentRepo(e.target.value)} />
-      <Button onClick={handleSearchRepo}/>
-      {repos.map(repo => <ItemRepo handleRemoveRepo={handleRemoveRepo} repo={repo}/>)}
+      <Container className='header'>
+        <img src={gitLogo} width={100} height={100} alt="github logo"/>
+        <Input value={currentUser} onChange={(e) => setCurrentUser(e.target.value)} onKeyPress={(e) => e.key === 'Enter' ? handleSearchRepo() : ''}/>
+        <Button onClick={handleSearchRepo}/>
+      </Container>
+
+      <p className='error'>{error}</p> 
+      <div className='containerRepos'>
+        {repos.map(repo => <ItemRepo key={repo.id} handleRemoveRepo={handleRemoveRepo} repo={repo}/>)}
+      </div>
     </Container>
   );
 }
 
 export default App;
-
-//https://api.github.com/users/AxLBR/repos

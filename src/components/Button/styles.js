@@ -18,4 +18,7 @@ export const ButtonContainer = styled.button`
         cursor: pointer;
     }
 
+    @media (max-width: 1050px) {
+        width: 30%;
+    }
 `

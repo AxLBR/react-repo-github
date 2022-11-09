@@ -24,4 +24,7 @@ export const InputContainer = styled.div`
         outline: none;
     }
 
+    @media (max-width: 1050px) {
+        width: 90%;
+    }
 `
