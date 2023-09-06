@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/repo-github/static/js/main.a6e8665b.js",
-    "static/media/github.png": "/repo-github/static/media/github.4d74fd76ac168df7723c.png",
-    "index.html": "/repo-github/index.html",
-    "main.a6e8665b.js.map": "/repo-github/static/js/main.a6e8665b.js.map"
+    "main.js": "/react-repo-github/static/js/main.eef59066.js",
+    "static/media/github.png": "/react-repo-github/static/media/github.4d74fd76ac168df7723c.png",
+    "index.html": "/react-repo-github/index.html",
+    "main.eef59066.js.map": "/react-repo-github/static/js/main.eef59066.js.map"
   },
   "entrypoints": [
-    "static/js/main.a6e8665b.js"
+    "static/js/main.eef59066.js"
   ]
 }
