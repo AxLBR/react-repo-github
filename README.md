@@ -24,7 +24,7 @@ Projeto desenvolvido como exercício do bootcamp Orange Tech+ da Dio, com intuí
 - GitHub API
 - Git/GitHub
 
-[Clique aqui para acessar o projeto](https://axlbr.github.io/repo-github/)
+[Clique aqui para acessar o projeto](https://axlbr.github.io/react-repo-github/)
 
 # Contato
 gabrieltoby@gmail.com
